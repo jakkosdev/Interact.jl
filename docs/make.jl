@@ -1,6 +1,6 @@
 using Documenter, Interact, Literate
-src = joinpath(@__DIR__, "src")
-Literate.markdown(joinpath(src, "tutorial.jl"), src, codefence = "```julia" => "```")
+src = @path joinpath(@__DIR__, "src")
+Literate.markdown( (@path joinpath(src, "tutorial.jl")), src, codefence = "```julia" => "```")
 
 makedocs(
     sitename = "Interact",

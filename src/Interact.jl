@@ -13,13 +13,14 @@ import Observables: @on, @map!, @map
 @reexport using CSSUtil
 @reexport using WebIO
 @reexport using Widgets
+using RelocatableFolders
 
 struct Bulma<:InteractBase.WidgetTheme; end
 
-const notebookdir = joinpath(@__DIR__, "..", "doc", "notebooks")
+const notebookdir = @path joinpath(@__DIR__, "..", "doc", "notebooks")
 
-const bulma_css = joinpath(@__DIR__, "..", "assets", "bulma.min.css")
-const bulma_confined_css = joinpath(@__DIR__, "..", "assets", "bulma_confined.min.css")
+const bulma_css = @path joinpath(@__DIR__, "..", "assets", "bulma.min.css")
+const bulma_confined_css = @path joinpath(@__DIR__, "..", "assets", "bulma_confined.min.css")
 
 function InteractBase.libraries(::Bulma)
     bulmalib = InteractBase.isijulia() ? bulma_confined_css : bulma_css
